@@ -19,7 +19,8 @@ const add = (numbers: String = ""): number | Error => {
       const num = parseInt(temp);
       //   console.log("num", num);
       if (num < 0) negatives.push(num);
-      else sum += num;
+      else if (num > 1000) {
+      } else sum += num;
       temp = "";
     } else temp = temp.concat(numbers[i]);
   }
