@@ -1,4 +1,6 @@
 import "./App.css";
+import add from "./Add";
+import React from "react";
 
 function App() {
   return (

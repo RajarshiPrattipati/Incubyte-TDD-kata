@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# 1 Create a simple String calculator with a method signature:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+———————————————
+int Add(string numbers)
+———————————————
+The method can take up to two numbers, separated by commas, and will return their sum.
+for example “” or “1” or “1,2” as inputs.
+(for an empty string it will return 0)
 
-## Available Scripts
+    Hints:
+    ——————
 
-In the project directory, you can run:
+- Start with the simplest test case of an empty string and move to one and two numbers
+- Remember to solve things as simply as possible so that you force yourself to write tests you did not think about
+- Remember to refactor after each passing test
 
-### `npm start`
+  ———————————————————————————————
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  # 2 Allow the Add method to handle an unknown amount of numbers
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  ————————————————————————————————
 
-### `npm test`
+  # 3 Allow the Add method to handle new lines between numbers (instead of commas).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  the following input is ok: “1\n2,3” (will equal 6)
+  the following input is NOT ok: “1,\n” (not need to prove it - just clarifying)
+  ——————————————————————————————-
 
-### `npm run build`
+  # 4 Support different delimiters
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  to change a delimiter, the beginning of the string will contain a separate line that looks like this: “//[delimiter]\n[numbers…]” for example “//;\n1;2” should return three where the default delimiter is ‘;’ .
+  the first line is optional. all existing scenarios should still be supported
+  ————————————————————————————————
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  # 5 Calling Add with a negative number will throw an exception “negatives not allowed” - and the negative that was passed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  if there are multiple negatives, show all of them in the exception message.
+  ————————————————————————————————
+  STOP HERE if you are a beginner. Continue if you can finish the steps so far in less than 30 minutes.
+  ————————————————————————————————
 
-### `npm run eject`
+  # 6 Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  ————————————————————————————————
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  # 7 Delimiters can be of any length with the following format: “//[delimiter]\n” for example: “//[***]\n1**_2_**3” should return 6
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  ————————————————————————————————
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  # 8 Allow multiple delimiters like this: “//[delim1][delim2]\n” for example “//[\*][%]\n1\*2%3” should return 6.
 
-## Learn More
+  ————————————————————————————————
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  # 9 make sure you can also handle multiple delimiters with length longer than one char
