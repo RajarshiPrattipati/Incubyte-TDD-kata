@@ -8,7 +8,12 @@ const add = (numbers: String = ""): number => {
   let temp = "";
   let delimiter = ",";
   let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
+  let i = 0;
+  if (numbers.slice(0, 2) === "//") {
+    delimiter = numbers[2];
+    i = 3;
+  }
+  for (; i < numbers.length; i++) {
     // console.log("numbers[i]: ", numbers[i]);
     if ([delimiter, "\n"].includes(numbers[i])) {
       if (parseInt(temp)) sum += parseInt(temp);
