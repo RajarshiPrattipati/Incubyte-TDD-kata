@@ -4,18 +4,40 @@
 
     Supports custom delimiters. eg, //;\n1;2
 */
-const add = (numbers: String = ""): number | Error => {
+
+const getDelimiters = (s: string): string[] => {
+  let dels = [];
+  for (let i = 0; i < s.length; i++) {
+    const i2 = s.slice(i).indexOf("]");
+    dels.push(s.slice(i + 1, i2));
+    i += i2;
+  }
+  console.log("dels", dels);
+  return dels;
+};
+const add = (numbers: string = ""): number | Error => {
   let temp = "";
-  let delimiter = ",";
+  let delimiters = [","];
   let sum = 0;
   let i = 0;
   let negatives = [];
   if (numbers.slice(0, 2) === "//") {
-    delimiter = numbers[2];
-    i = 3;
+    const indexOfSlash = numbers.search("\n");
+    const searchString = numbers.slice(2, indexOfSlash);
+
+    console.log("S", searchString, getDelimiters(searchString));
+    // console.log("I", indexOfSlash, numbers[indexOfSlash + 1]);
+    delimiters.push(...getDelimiters(searchString));
+    i += indexOfSlash + 1;
   }
   for (; i < numbers.length || temp.length; i++) {
-    if ([delimiter, "\n"].includes(numbers[i]) || i === numbers.length) {
+    console.log("numbers.slice(i, i + s.length)", numbers.slice(i), delimiters);
+    if (
+      [...delimiters, "\n"].some(
+        (s) => numbers.slice(i, i + s.length) === s && (i += s.length - 1)
+      ) ||
+      i === numbers.length
+    ) {
       const num = parseInt(temp);
       //   console.log("num", num);
       if (num < 0) negatives.push(num);
