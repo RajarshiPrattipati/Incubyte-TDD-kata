@@ -31,3 +31,13 @@ test("//;2;4", () => {
 test("//;2;4;6;8", () => {
   expect(add("//;2;4;6;8")).toBe(20);
 });
+
+test("-1,2", () => {
+  expect(add("-1,2")).toEqual(Error("Negative number(s) -1 not allowed"));
+});
+
+test("-1,-2,-3", () => {
+  expect(add("-1,-2,-3")).toEqual(
+    Error("Negative number(s) -1,-2,-3 not allowed")
+  );
+});
