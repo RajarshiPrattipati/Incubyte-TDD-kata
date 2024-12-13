@@ -47,5 +47,5 @@ import add from "./Add";
 // });
 
 test("//[***]\n1***3", () => {
-  expect(add("//[***]\n1***3")).toBe(4);
+  expect(add("//[***][.][x]\n1***3.5x9")).toBe(18);
 });
