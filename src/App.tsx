@@ -1,4 +1,3 @@
-import "./App.css";
 import add from "./Add";
 import { useEffect, useState } from "react";
 
@@ -12,8 +11,9 @@ function App() {
 
   return (
     <div className="App">
-      <div className="">
-        <text>Input</text>
+      <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]"></div>
+      <div className="top self-center items-center">
+        <h1 className="text-6xl">Input</h1>
         <input
           value={string}
           onChange={(s) => setString(s.target.value)}
