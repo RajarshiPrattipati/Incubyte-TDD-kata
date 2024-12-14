@@ -6,7 +6,6 @@
 */
 
 const getDelimiters = (s: string): string[] => {
-  console.log("s", s);
   let dels = [];
   for (let i = 0; i < s.length; i++) {
     const i2 = s.indexOf("]", i);
@@ -17,12 +16,13 @@ const getDelimiters = (s: string): string[] => {
 };
 const add = (numbers: string = ""): number | Error => {
   try {
-    console.log(numbers);
-    let temp = "";
-    let delimiters = [","];
-    let sum = 0;
-    let i = 0;
-    let negatives = [];
+    // Initialize a few helpers.
+    let temp = ""; // String parsing helper.
+    let delimiters = [","]; // Custom delimiters
+    let sum = 0; // Result
+    let i = 0; // Index of input string
+    let negatives = []; // Negative numbers which are not allowed
+
     if (numbers.slice(0, 2) === "//") {
       const indexOfSlash = numbers.search("\n");
       const searchString = numbers.slice(2, indexOfSlash);
